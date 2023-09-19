@@ -6,6 +6,7 @@ import edu.nnudy.lq.intelligentPartyBuilding.model.dto.pdo.UserAccountAuthentica
 import org.jetbrains.annotations.Range;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
 
 @Repository("userAuthenticationDAO")
@@ -63,6 +64,19 @@ public class DefaultUserAuthenticationDAOImpl implements UserAuthenticationDAO {
 				authentication.ID(),
 				authentication.role_type(),
 				authentication.password()
+		);
+	}
+	
+	@Override
+	@Nullable
+	public UserAccountAuthentication findUser(
+			@Range(from = 0, to = ((long) Integer.MAX_VALUE) << 1) final long ID,
+			@NonNull final RoleType roleType
+	) {
+		return jdbcTemplate.queryForObject(
+				"SELECT * FROM user_account_authentication WHERE ID = ? AND role_type = ?;",
+				UserAccountAuthentication.MAPPER,
+				ID, roleType
 		);
 	}
 }
