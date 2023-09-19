@@ -11,7 +11,7 @@
  Target Server Version : 80034
  File Encoding         : 65001
 
- Date: 15/09/2023 12:03:29
+ Date: 19/09/2023 12:32:51
 */
 
 SET NAMES utf8mb4;
@@ -103,10 +103,10 @@ CREATE TABLE `power_user`  (
 DROP TABLE IF EXISTS `student_achievement`;
 CREATE TABLE `student_achievement`  (
   `ID` int(0) UNSIGNED NOT NULL,
-  `comprehensive_Evaluation_Ranking` double UNSIGNED NOT NULL DEFAULT 1,
-  `CET_Score` smallint(0) UNSIGNED NOT NULL DEFAULT 0,
-  `CRE_Grade` char(4) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '无',
-  `personal_comprehensive_quality_assessment_schedule` json NULL,
+  `comprehensive_evaluation_ranking` double UNSIGNED NOT NULL DEFAULT 1,
+  `CET_score` smallint(0) UNSIGNED NOT NULL DEFAULT 0,
+  `CRE_grade` char(4) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL DEFAULT '无',
+  `personal_comprehensive_quality_assessment` json NULL,
   PRIMARY KEY (`ID`) USING BTREE,
   CONSTRAINT `student_achievement_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `student_user` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;

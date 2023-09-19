@@ -14,6 +14,8 @@ module dj.core {
 	requires spring.web;
 	requires spring.security.config;
 	requires spring.security.web;
+	requires spring.jdbc;
+	requires com.fasterxml.jackson.databind;
 	
 	exports edu.nnudy.lq.intelligentPartyBuilding.service.intf;
 	exports edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.intf;
