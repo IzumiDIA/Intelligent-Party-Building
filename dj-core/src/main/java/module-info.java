@@ -1,3 +1,4 @@
+import edu.nnudy.lq.intelligentPartyBuilding.manager.intf.*;
 import edu.nnudy.lq.intelligentPartyBuilding.service.intf.*;
 import edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.intf.*;
 
@@ -17,11 +18,13 @@ module dj.core {
 	requires spring.jdbc;
 	requires com.fasterxml.jackson.databind;
 	
-	exports edu.nnudy.lq.intelligentPartyBuilding.service.intf;
 	exports edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.intf;
+	exports edu.nnudy.lq.intelligentPartyBuilding.manager.intf;
+	exports edu.nnudy.lq.intelligentPartyBuilding.service.intf;
 	exports edu.nnudy.lq.intelligentPartyBuilding.model.dto.pdo;
 	exports edu.nnudy.lq.intelligentPartyBuilding.filter;
 	
 	uses HelloWorldService;
 	uses UserAuthenticationDAO;
+	uses UserManager;
 }

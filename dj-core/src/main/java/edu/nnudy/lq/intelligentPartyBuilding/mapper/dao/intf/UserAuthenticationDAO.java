@@ -12,11 +12,12 @@ public interface UserAuthenticationDAO extends DataAccessObject {
 	@Range(from = 0, to = Integer.MAX_VALUE)
 	Integer count(@Range(from = 0, to = ((long) Integer.MAX_VALUE) << 1) final long ID);
 	Boolean isExisting(@NonNull final UserAccountAuthentication authentication);
-	int updatePassword(@NonNull final UserAccountAuthentication authentication, @NonNull final byte[] newPassword);
-	int updateRoleType(@NonNull final UserAccountAuthentication authentication, @NonNull final RoleType newRoleType);
 	@Nullable
 	UserAccountAuthentication findUser(
 			@Range(from = 0, to = ((long) Integer.MAX_VALUE) << 1) final long ID,
 			@NonNull final RoleType roleType
 	);
+	int updatePassword(@NonNull final UserAccountAuthentication authentication, @NonNull final byte[] newPassword);
+	int updateRoleType(@NonNull final UserAccountAuthentication authentication, @NonNull final RoleType newRoleType);
+	int insertUserAuth(@NonNull final UserAccountAuthentication newAuthentication);
 }

@@ -1,7 +1,9 @@
+import edu.nnudy.lq.intelligentPartyBuilding.manager.UserManagerProvider;
+import edu.nnudy.lq.intelligentPartyBuilding.manager.intf.UserManager;
 import edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.intf.UserAuthenticationDAO;
+import edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.provider.UserAuthenticationDAOProvider;
 import edu.nnudy.lq.intelligentPartyBuilding.service.impl.DefaultHelloWorldServiceImpl;
 import edu.nnudy.lq.intelligentPartyBuilding.service.intf.HelloWorldService;
-import edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.provider.UserAuthenticationDAOProvider;
 
 /**
  * Specific implementation of core business module.
@@ -18,4 +20,5 @@ module dj.impl {
 	
 	provides HelloWorldService with DefaultHelloWorldServiceImpl;
 	provides UserAuthenticationDAO with UserAuthenticationDAOProvider;
+	provides UserManager with UserManagerProvider;
 }
