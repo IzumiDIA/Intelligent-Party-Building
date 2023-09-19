@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+.HeaderPictures {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.HeaderPictures > img {
+	width: 100%;
+}
+
+.IntroductionNavBar {
+	--RedOpacity: rgba(255, 0, 0, .95);
+	top: 1vh;
+	position: sticky;
+	margin: 1vh auto 2vh auto;
+	min-width: 50%;
+	max-width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding: 0;
+	background-color: transparent;
+	background-image: conic-gradient(at left top, var(--RedOpacity) 90deg, rgba(255, 255, 0, 0.6) 95deg, var(--RedOpacity) 120deg),
+	linear-gradient(to left bottom, var(--RedOpacity), var(--RedOpacity), rgba(255, 255, 0, 0.6), var(--RedOpacity), var(--RedOpacity));
+	background-blend-mode: soft-light;
+	background-repeat: no-repeat;
+	background-size: 200% 200%;
+	backdrop-filter: blur(.2rem);
+	animation: hikari 16s linear infinite;
+	border: .1em outset gold;
+	border-radius: .85rem;
+	box-shadow: .4em .4em 1.4em -.2em red;
+	z-index: 2;
+}
+
+@keyframes hikari {
+	0% {
+		background-position-x: 0;
+		background-position-y: 0;
+	}
+	25% {
+		background-position-x: 100%;
+		background-position-y: 0;
+	}
+	50% {
+		background-position-x: 100%;
+		background-position-y: 100%;
+	}
+	75% {
+		background-position-x: 0;
+		background-position-y: 100%;
+	}
+	100% {
+		background-position-x: 0;
+		background-position-y: 0;
+	}
+}
+
+.IntroductionNavBar > .IntroductionItem {
+	font-size: 1.8rem;
+	color: black;
+	font-family: "华文楷体", fantasy;
+	text-decoration: none;
+	-webkit-text-stroke: .004em gold;
+}
+
+.IntroductionItem ~ .IntroductionItem {
+	margin-left: 12vw;
+}
+
+.IntroductionNavBar::before {
+	content: '🌟'; /* ⭐🎗️📯🎷🎺🏷️💝⚜️ */
+	font-size: .8em;
+}
+
+.IntroductionNavBar::after {
+	content: '✨';
+	font-size: .8em;
+	writing-mode: tb;
+	text-align: end;
+}
+
+.Main-Page1 .HomeContent {
+	overflow-x: scroll;
+}
+
+.Main-Page1 .IntroductionArticle {
+	position: relative;
+	text-indent: 2em;
+	text-shadow: 0 0 .04em #8cfca2;
+	margin: 0 1rem 6rem;
+	border-radius: 1rem;
+	background-color: rgba(255, 255, 255, 0.1);
+	background-repeat: repeat;
+	background-size: 10rem 10rem;
+	scroll-margin: 2.8rem;
+}
+
+.IntroductionArticle :is(p, h2) {
+	position: relative;
+}
+
+.Main-Page1 .IntroductionArticle::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -.6rem;
+	right: -.6rem;
+	bottom: 0;
+	opacity: .8;
+	border-radius: 2rem;
+	border: 4px groove rgba(178, 177, 177, 0.5);
+	backdrop-filter: blur(2px);
+	background-image: url("QuartzFrostedMaterialMap.png");
+	background-repeat: repeat;
+	background-size: 10rem 10rem;
+}
+
+@media not all and (max-aspect-ratio: 3/5) {
+	.Main-Page1 > .IntroductionArticle:nth-of-type(odd) {
+		padding-right: 50vw;
+	}
+
+	.Main-Page1 > .IntroductionArticle:nth-of-type(even) {
+		padding-left: 50vw;
+	}
+
+	.IntroductionArticle:nth-of-type(odd)::before {
+		left: -.6rem;
+		right: 48vw;
+	}
+
+	.IntroductionArticle:nth-of-type(even)::before {
+		right: -.6rem;
+		left: 48vw;
+	}
+}

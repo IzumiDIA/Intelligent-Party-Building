@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+table.record-entry__page-table {
+	margin: auto;
+}
+
+table.record-entry__page-table > colgroup > col.current_form_data {
+	width: 70%;
+	background-color: rgba(182, 252, 151, 0.5);
+}
+
+#display-tbody > tr > td.tbody-td:where(.studentID,.current_form_data,.current_node,.current_subNode) {
+	text-align: center;
+}

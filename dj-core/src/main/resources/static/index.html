@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" content="text/html" http-equiv="Content-Type">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="#fff" name="theme-color">
+	<meta content="Just it's my test demo." name="description">
+	<title>index.html</title>
+	<link href="CSS/index.css" rel="prefetch stylesheet" type="text/css">
+</head>
+<body>
+<main>
+	<section>
+		<form action="../logIn" enctype="application/x-www-form-urlencoded" method="POST" name="StudentLogIn">
+			<fieldset>
+				<legend>Student Log In</legend>
+				<label>
+					学号：<input id="studentID" maxlength="16" min="0" name="studentID" required step="1" type="number">
+				</label>
+				<label>
+					用户密码：<input id="student-password" maxlength="32" name="student-password" required type="password">
+				</label>
+				<input hidden="hidden" name="user-category" type="hidden" value="student">
+			</fieldset>
+			<span>
+				<button type="reset">⚠️重置</button>
+				<button type="submit">Log In</button>
+			</span>
+		</form>
+	</section>
+
+	<section>
+		<form action="../register" enctype="application/x-www-form-urlencoded" method="POST" name="StudentRegister">
+			<fieldset>
+				<legend>Student Register</legend>
+				<label>
+					学号：<input maxlength="16" min="0" name="studentID" required step="1" type="number">
+				</label>
+				<label>
+					用户密码：<input maxlength="32" name="student-password" required type="password">
+				</label>
+				<label>
+					学生姓名：<input name="student-name" required type="text">
+				</label>
+				<label>
+					所属班级：<input min="0" name="student-class" required step="1" type="number">
+				</label>
+				<label>
+					性别：
+					<select name="student-gender" required>
+						<option selected value="无">无</option>
+						<option value="女">女</option>
+						<option value="男">男</option>
+						<option value="密">密</option>
+					</select>
+				</label>
+				<label>
+					入学年份：<input max="4000" maxlength="4" min="2018" minlength="4" name="student__start-year" step="1" type="number">
+				</label>
+				<input hidden="hidden" name="user-category" type="hidden" value="student">
+			</fieldset>
+			<span>
+				<button type="reset">⚠️重置</button>
+				<button type="submit">Register</button>
+			</span>
+		</form>
+	</section>
+
+	<section>
+		<form action="../logIn" enctype="application/x-www-form-urlencoded" method="POST" name="ManagerLogIn">
+			<fieldset>
+				<legend>Manager Log In</legend>
+				<label class="ID-input">
+					工号：
+					<input id="managerID" maxlength="16" min="0" name="managerID" required step="1" type="number">
+				</label>
+				<label>
+					用户密码：
+					<input id="manager-password" maxlength="32" name="manager-password" required type="password">
+					<input hidden="hidden" name="user-category" type="hidden" value="manager">
+				</label>
+			</fieldset>
+			<span>
+				<button type="reset">⚠️重置</button>
+				<button type="submit">Log In</button>
+			</span>
+		</form>
+	</section>
+
+	<section>
+		<form action="../register" enctype="application/x-www-form-urlencoded" method="POST" name="ManagerRegister">
+			<fieldset>
+				<legend>Manager Register</legend>
+				<input hidden="hidden" name="user-category" type="hidden" value="manager">
+			</fieldset>
+		</form>
+	</section>
+</main>
+</body>
+</html>

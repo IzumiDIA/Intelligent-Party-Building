@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+@media screen and (orientation: landscape) and (width > 20em) {
+	form.table-header {
+		width: 90vw;
+	}
+}
+
+.Item-Row__Tittle {
+	writing-mode: vertical-rl;
+}
+
+.Item-Row__Tittle > button:first-of-type {
+	margin-block-end: 1em;
+}
+
+.Item-Row__Tittle > button:last-of-type {
+	margin-block-start: 1em;
+}

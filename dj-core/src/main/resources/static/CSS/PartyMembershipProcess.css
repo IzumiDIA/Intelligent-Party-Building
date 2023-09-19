@@ -1,0 +1,232 @@
+@charset "UTF-8";
+
+header.progress-bar {
+	inline-size: 98%;
+	display: grid;
+	grid-template-columns: repeat(6, auto);
+	grid-template-rows: auto 1em;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+	text-align: center;
+	margin: auto auto 1em;
+}
+
+header.progress-bar label.progress-node-title {
+	padding: .4em .6em .4em .6em;
+	border-radius: .4em;
+	border-inline: .1em;
+	border-style: groove;
+	border-color: transparent;
+}
+
+header.progress-bar label.progress-node-title:hover {
+	background-color: rgba(75, 219, 255, 0.7);
+}
+
+header.progress-bar > progress {
+	display: flex;
+	inline-size: 95%;
+	grid-column: 1 / 7;
+	grid-row: 2 / 3;
+	justify-self: center;
+}
+
+main {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	inline-size: 100%;
+}
+
+main > section.process-section {
+	display: none;
+	flex-direction: inherit;
+	place-content: inherit;
+	place-items: inherit;
+	place-self: inherit;
+	inline-size: inherit;
+	grid-template-rows: auto;
+	grid-template-columns: auto 1fr;
+}
+
+#共青团员:checked ~ main > #共青团员-section {
+	display: grid;
+}
+
+#共青团员:checked ~ header.progress-bar label.progress-node-title:nth-of-type(1) {
+	border-color: #2e4f8d;
+}
+
+#入党启蒙:checked ~ main > #入党启蒙-section {
+	display: grid;
+}
+
+#入党启蒙:checked ~ header.progress-bar label.progress-node-title:nth-of-type(2) {
+	border-color: #2e4f8d;
+}
+
+#入党积极分子:checked ~ main > #入党积极分子-section {
+	display: grid;
+}
+
+#入党积极分子:checked ~ header.progress-bar label.progress-node-title:nth-of-type(3) {
+	border-color: #2e4f8d;
+}
+
+#发展对象:checked ~ main > #发展对象-section {
+	display: grid;
+}
+
+#发展对象:checked ~ header.progress-bar label.progress-node-title:nth-of-type(4) {
+	border-color: #2e4f8d;
+}
+
+#预备党员:checked ~ main > #预备党员-section {
+	display: grid;
+}
+
+#预备党员:checked ~ header.progress-bar label.progress-node-title:nth-of-type(5) {
+	border-color: #2e4f8d;
+}
+
+#正式党员:checked ~ main > #正式党员-section {
+	display: grid;
+}
+
+#正式党员:checked ~ header.progress-bar label.progress-node-title:nth-of-type(6) {
+	border-color: #2e4f8d;
+}
+
+main aside.side-overview-bar {
+	display: inline-flex;
+	max-inline-size: 12em;
+	flex-direction: column;
+	justify-items: left;
+	font-size: 1.25em;
+	padding-inline-end: .4em;
+	border-inline-end: .1em solid grey;
+}
+
+main aside.side-overview-bar li {
+	margin-block-end: .75em;
+}
+
+main aside.side-overview-bar li label:hover {
+	text-decoration: underline;
+	text-underline: deepskyblue dot-dash;
+}
+
+main form.main-form {
+	/*inline-size: calc(100% - 11.2em);*/
+	display: none;
+	flex-direction: column;
+	align-items: center;
+}
+
+section.process-section > input:nth-of-type(1):checked ~ form.main-form:nth-of-type(1) {
+	display: flex;
+}
+
+section.process-section > input:nth-of-type(2):checked ~ form.main-form:nth-of-type(2) {
+	display: flex;
+}
+
+section.process-section > input:nth-of-type(3):checked ~ form.main-form:nth-of-type(3) {
+	display: flex;
+}
+
+section.process-section > input:nth-of-type(4):checked ~ form.main-form:nth-of-type(4) {
+	display: flex;
+}
+
+section.process-section > input:nth-of-type(5):checked ~ form.main-form:nth-of-type(5) {
+	display: flex;
+}
+
+section.process-section > input:nth-of-type(6):checked ~ form.main-form:nth-of-type(6) {
+	display: flex;
+}
+
+main form.main-form > fieldset {
+	max-inline-size: 85%;
+	min-inline-size: 60%;
+	display: inherit;
+	flex-direction: inherit;
+	place-content: center;
+	place-items: center;
+	border-radius: 1em;
+}
+
+main > section > form.main-form > fieldset label {
+	margin-block-end: .4em;
+}
+
+main form.main-form > fieldset > legend {
+	margin: auto;
+}
+
+form.main-form > fieldset .file-example {
+}
+
+form.main-form > fieldset .file-example figcaption {
+	text-align: center;
+	margin-block-end: .8em;
+}
+
+form.main-form > fieldset .file-example :not(figcaption) {
+	margin: auto;
+}
+
+form.main-form > fieldset .file-example .photo-sample {
+	object-fit: cover;
+	object-position: center;
+	inline-size: 8em;
+	block-size: 12em;
+	display: inline-block;
+	padding: 0;
+	margin: auto;
+	margin-inline-end: min(3.2em, 6vw);
+}
+
+form.main-form fieldset .default-file-uploader {
+	margin-block-start: .5em;
+	inline-size: 16em;
+	block-size: 12em;
+	border: .2em groove darkblue;
+	border-radius: .4em;
+}
+
+form.main-form > fieldset .file-example input[type="file"] {
+	font-size: .96em;
+	inline-size: 8em;
+	block-size: 12em;
+	display: inline-block;
+	float: right;
+	border: .2em groove darkblue;
+	border-radius: .4em;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+form.main-form > fieldset input[type="file"][required]::file-selector-button {
+	display: block;
+	margin: auto;
+	border-radius: .5em;
+}
+
+form.main-form fieldset .form-controller-button {
+	margin-block-start: .4em;
+	max-inline-size: 20em;
+	inline-size: 60%;
+	min-inline-size: 6em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+html {
+	/*noinspection CssInvalidPropertyValue*/
+	overflow-y: overlay;
+}

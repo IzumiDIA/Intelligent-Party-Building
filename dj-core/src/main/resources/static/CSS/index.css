@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+main > section {
+	margin: auto;
+	margin-block-end: 3em;
+	max-width: 44em;
+}
+
+form > fieldset {
+	border-radius: .4em;
+}
+
+form fieldset > label:not(:last-of-type) {
+	margin-inline-end: 3em;
+}
+
+form > span {
+	width: 100%;
+	display: inline-flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" content="text/html" http-equiv="Content-Type">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="#fff" name="theme-color">
+	<meta content="Just it's my test demo." name="description">
+	<title>入党流程</title>
+	<link href="CSS/PartyMembershipProcess.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<input checked hidden="hidden" id="共青团员" name="progress-tab" type="radio" value="0">
+<input hidden="hidden" id="入党启蒙" name="progress-tab" type="radio" value="1">
+<input hidden="hidden" id="入党积极分子" name="progress-tab" type="radio" value="2">
+<input hidden="hidden" id="发展对象" name="progress-tab" type="radio" value="3">
+<input hidden="hidden" id="预备党员" name="progress-tab" type="radio" value="4">
+<input hidden="hidden" id="正式党员" name="progress-tab" type="radio" value="5">
+<header class="progress-bar">
+	<label class="progress-node-title" for="共青团员">共青团员</label>
+	<label class="progress-node-title" for="入党启蒙">入党启蒙</label>
+	<label class="progress-node-title" for="入党积极分子">入党积极分子</label>
+	<label class="progress-node-title" for="发展对象">发展对象</label>
+	<label class="progress-node-title" for="预备党员">预备党员</label>
+	<label class="progress-node-title" for="正式党员">正式党员</label>
+	<progress id="process-progress-node" max="5" value="0"></progress>
+</header>
+<main>
+	<section class="process-section" id="共青团员-section">
+		<input checked hidden="hidden" id="团员信息录入" name="共青团员-secondary-progress-overview-tab" type="radio" value="0">
+		<aside aria-labelledby="overview bar" class="side-overview-bar">
+			<ul>
+				<li><label for="团员信息录入">团员信息录入</label></li>
+			</ul>
+		</aside>
+		<form class="main-form" name="团员信息录入" onreset="resetDisplayedImage(document.getElementById('团员证照片'));" onsubmit="return formDataSubmit(this, 'NODE_STATE_1', 'A');">
+			<fieldset>
+				<legend>团员信息录入</legend>
+				<label>
+					入团时间：<input name="入团时间" required type="date">
+				</label>
+				<figure class="file-example">
+					<figcaption>团员证照片：*需体现团员照片，姓名，入团时间，盖章</figcaption>
+					例：<img alt="" class="photo-sample" src="Images/BearHeader.JPG">
+					<input accept="image/*" id="团员证照片" name="团员证照片" onchange="displayImageAfterSelectFile(this);" required type="file">
+				</figure>
+				<div class="form-controller-button">
+					<button type="submit">提交审核</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+
+	<section class="process-section" id="入党启蒙-section">
+		<input checked hidden="hidden" id="入党申请书" name="入党启蒙-secondary-progress-overview-tab" type="radio" value="0">
+		<input hidden="hidden" id="谈心谈话" name="入党启蒙-secondary-progress-overview-tab" type="radio" value="1">
+		<input hidden="hidden" id="初级党校培训" name="入党启蒙-secondary-progress-overview-tab" type="radio" value="2">
+		<input hidden="hidden" id="推优" name="入党启蒙-secondary-progress-overview-tab" type="radio" value="3">
+		<aside aria-labelledby="overview bar" class="side-overview-bar">
+			<ul>
+				<li><label for="入党申请书">入党申请书</label></li>
+				<li><label for="谈心谈话">谈心谈话</label></li>
+				<li><label for="初级党校培训">初级党校培训</label></li>
+				<li><label for="推优">推优</label></li>
+			</ul>
+		</aside>
+		<form class="main-form">
+			<fieldset>
+				<legend>入党申请书</legend>
+				<label>
+					落款日期：<input type="date">
+				</label>
+				<figure class="file-example">
+					<figcaption>上传:</figcaption>
+					<p class="photo-sample">入党申请书书写要求</p>
+					<input accept="image/*" type="file">
+				</figure>
+				<div class="form-controller-button">
+					<button type="submit">提交审核</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>谈心谈话</legend>
+				<label>
+					谈心时间：<input type="date">
+				</label>
+				<label>
+					谈话人：<input maxlength="6" type="text">
+				</label>
+				<figure class="file-example">
+					<figcaption>上传照片:</figcaption>
+					<input accept="image/*" type="file">
+				</figure>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>初级党校培训</legend>
+				<label>
+					培训时间：<input type="date">
+				</label>
+				<label>
+					培训期数：<input maxlength="4" type="text">
+				</label>
+				<figure class="file-example">
+					<figcaption>上传结业证书证明:</figcaption>
+					<input accept="image/*" type="file">
+				</figure>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>推优</legend>
+				<label>
+					推优公示期：<input maxlength="8" type="date">
+				</label>
+				<label>
+					院团委意见时间：<input maxlength="8" type="date">
+				</label>
+				<label>
+					推优表照片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<label>
+					公示照片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+	<section class="process-section" id="入党积极分子-section">
+		<input checked hidden="hidden" id="吸收入党积极分子" name="入党积极分子-secondary-progress-overview-tab" type="radio" value="0">
+		<input hidden="hidden" id="思想汇报" name="入党积极分子-secondary-progress-overview-tab" type="radio" value="1">
+		<input hidden="hidden" id="入党积极分子培养教育考察登记表" name="入党积极分子-secondary-progress-overview-tab" type="radio" value="2">
+		<input hidden="hidden" id="中级党校培训" name="入党积极分子-secondary-progress-overview-tab" type="radio" value="3">
+		<aside aria-labelledby="overview bar" class="side-overview-bar">
+			<ul>
+				<li><label for="吸收入党积极分子">吸收入党积极分子</label></li>
+				<li><label for="思想汇报">思想汇报</label></li>
+				<li><label for="入党积极分子培养教育考察登记表">入党积极分子培养教育考察登记表</label></li>
+				<li><label for="中级党校培训">中级党校培训</label></li>
+			</ul>
+		</aside>
+		<form class="main-form">
+			<fieldset>
+				<legend>吸收入党积极分子</legend>
+				<label>
+					确定无入党积极分子的时间：<input type="date">
+				</label>
+				<label>
+					培养联系人：<input type="text">
+				</label>
+				<label>
+					上传决议照片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>思想汇报</legend>
+				<label>
+					思想汇报时间：<input type="date">
+				</label>
+				<figure class="file-example">
+					<figcaption>上传:</figcaption>
+					<img alt="思想汇报需求" class="photo-sample" src="Images/BearHeader.JPG">
+					<input accept="image/*" type="file">
+				</figure>
+				<div class="form-controller-button">
+					<button type="submit">提交审核</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>入党积极分子培养教育考察登记表</legend>
+				<label>
+					上传图片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>中级党校培训</legend>
+				<label>
+					推优公示期：<input maxlength="8" type="date">
+				</label>
+				<label>
+					院团委意见时间：<input maxlength="8" type="date">
+				</label>
+				<label>
+					推优表照片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<label>
+					公示照片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+	<section class="process-section" id="发展对象-section">
+		<input checked hidden="hidden" id="确定发展对象" name="发展对象-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="报上级党委考察" name="发展对象-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="确定入党介绍人" name="发展对象-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="政治审查" name="发展对象-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="发展对象培训" name="发展对象-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="个人自传" name="发展对象-secondary-progress-overview-tab" type="radio">
+		<aside aria-labelledby="overview bar" class="side-overview-bar">
+			<ul>
+				<li><label for="确定发展对象">确定发展对象</label></li>
+				<li><label for="报上级党委考察">报上级党委考察</label></li>
+				<li><label for="确定入党介绍人">确定入党介绍人</label></li>
+				<li><label for="政治审查">政治审查</label></li>
+				<li><label for="发展对象培训">发展对象培训</label></li>
+				<li><label for="思想汇报" onclick="progressTab2.click();">思想汇报</label></li>
+				<li><label for="个人自传">个人自传</label></li>
+			</ul>
+		</aside>
+		<form class="main-form">
+			<fieldset>
+				<legend>确定发展对象</legend>
+				<label>
+					座谈会时间：<input type="datetime-local">
+				</label>
+				<label>
+					地点：<input maxlength="18" type="text">
+				</label>
+				<label>
+					参与人员：<input type="text">
+				</label>
+				<label>
+					上传图片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>报上级党委考察</legend>
+				<label>
+					发展对象（考察）时间：<input type="date">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>确定入党介绍人</legend>
+				<label>
+					入党介绍人：<input maxlength="8" type="text">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>政治审查</legend>
+				<label>
+					政审时间：<input type="date">
+				</label>
+				<label>
+					上传图片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>发展对象培训</legend>
+				<label>
+					推优公示期：<input maxlength="8" type="date">
+				</label>
+				<label>
+					院团委意见时间：<input maxlength="8" type="date">
+				</label>
+				<label>
+					推优表照片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<label>
+					公示照片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>个人自传</legend>
+				<label>
+					个人自传时间：<input type="date">
+				</label>
+				<figure class="file-example">
+					<figcaption>上传照片：</figcaption>
+					例：<img alt="" class="photo-sample" src="Images/BearHeader.JPG">
+					<input accept="image/*" type="file">
+				</figure>
+				<div class="form-controller-button">
+					<button type="submit">提交审核</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+	<section class="process-section" id="预备党员-section">
+		<input checked hidden="hidden" id="发展党员公示" name="预备党员-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="支部大会" name="预备党员-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="预备党员考察" name="预备党员-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="入党志愿书" name="预备党员-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="高级党校培训" name="预备党员-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="转正申请" name="预备党员-secondary-progress-overview-tab" type="radio">
+		<aside aria-labelledby="overview bar" class="side-overview-bar">
+			<ul>
+				<li><label for="发展党员公示">发展党员公示</label></li>
+				<li><label for="支部大会">支部大会</label></li>
+				<li><label for="预备党员考察">预备党员考察</label></li>
+				<li><label for="入党志愿书">入党志愿书</label></li>
+				<li><label for="高级党校培训">高级党校培训</label></li>
+				<li><label for="思想汇报" onclick="progressTab2.click();">思想汇报</label></li>
+				<li><label for="转正申请">转正申请</label></li>
+			</ul>
+		</aside>
+		<form class="main-form">
+			<fieldset>
+				<legend>发展党员公示</legend>
+				<label>
+					公示时间：<input type="date">
+				</label>
+				<label>
+					上传图片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>支部大会</legend>
+				<label>
+					时间：<input type="date">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>预备党员考察</legend>
+				<label>
+					上传图片：
+					<input accept="image/*" class="default-file-uploader" type="file">
+					<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>入党志愿书</legend>
+				<label>
+					上传图片：
+					<input accept="image/*" class="default-file-uploader" type="file">
+					<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>高级级党校培训</legend>
+				<label>
+					推优公示期：<input maxlength="8" type="date">
+				</label>
+				<label>
+					院团委意见时间：<input maxlength="8" type="date">
+				</label>
+				<label>
+					推优表照片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<label>
+					公示照片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>转正申请</legend>
+				<label>
+					<input type="date">
+				</label>
+				<figure class="file-example">
+					<figcaption>上传图片：</figcaption>
+					例：<img alt="" class="photo-sample" src="Images/BearHeader.JPG">
+					<input accept="image/*" type="file">
+				</figure>
+				<div class="form-controller-button">
+					<button type="submit">提交审核</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+	<section class="process-section" id="正式党员-section">
+		<input checked hidden="hidden" id="座谈会" name="正式党员-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="公示" name="正式党员-secondary-progress-overview-tab" type="radio">
+		<input hidden="hidden" id="支部大会座谈会" name="正式党员-secondary-progress-overview-tab" type="radio">
+		<aside aria-labelledby="overview bar" class="side-overview-bar">
+			<ul>
+				<li><label for="座谈会">座谈会</label></li>
+				<li><label for="公示">公示</label></li>
+				<li><label for="支部大会座谈会">支部大会</label></li>
+			</ul>
+		</aside>
+		<form class="main-form">
+			<fieldset>
+				<legend>座谈会</legend>
+				<label>
+					座谈会时间：<input type="datetime-local">
+				</label>
+				<label>
+					地点：<input maxlength="18" type="text">
+				</label>
+				<label>
+					参与人员：<input type="text">
+				</label>
+				<label>
+					上传图片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>公示</legend>
+				<label>
+					公示日期<input type="date">
+				</label>
+				<label>
+					上传图片：
+					<input accept="image/*" class="default-file-uploader" type="file">
+					<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+		<form class="main-form">
+			<fieldset>
+				<legend>支部大会</legend>
+				<label>
+					座谈会时间：<input type="datetime-local">
+				</label>
+				<label>
+					地点：<input maxlength="18" type="text">
+				</label>
+				<label>
+					参与人员：<input type="text">
+				</label>
+				<label>
+					上传图片：<input accept="image/*" class="default-file-uploader" type="file">
+				</label>
+				<div class="form-controller-button">
+					<button type="submit">提交</button>
+					<button type="reset">重置</button>
+				</div>
+			</fieldset>
+		</form>
+	</section>
+</main>
+<script async rel="script" src="JS/PartyMembershipProcess.js" type="module"></script>
+<script rel="script" src="JS/PMP__PageInitialization.js" type="module"></script>
+</body>
+</html>

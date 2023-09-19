@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" content="text/html" http-equiv="Content-Type">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="#fff" name="theme-color">
+	<meta content="Just it's my test demo." name="description">
+	<title>个人综合素质测评明细表</title>
+	<link as="style" href="CSS/PersonalComprehensiveQualityAssessmentScheduleFilling.css" prefetch rel="stylesheet prefetch" type="text/css">
+	<link as="style" href="CSS/PCQAS__not_orientation_landscape_width_64em.css" media=" not screen and (orientation: landscape) and (width > 64em)" prefetch rel="stylesheet prefetch" type="text/css">
+	<link as="style" href="CSS/PCQAS__orientation_landscape_width_64em.css" media=" only screen and (orientation: landscape) and (width > 64em)" prefetch rel="stylesheet prefetch" type="text/css">
+	<link as="style" href="CSS/PCQAS__orientation_portrait.css" media=" only screen and (orientation: portrait)" prefetch rel="stylesheet prefetch" type="text/css">
+	<link as="style" href="CSS/PCQAS__not_orientation_portrait.css" media=" not screen and (orientation: portrait)" prefetch rel="stylesheet prefetch" type="text/css">
+</head>
+<body>
+
+<main id="main-table">
+	<form class="table-header">
+		<fieldset>
+			<legend>
+				<strong>中北学院</strong>
+				<output class="YearOutput" name="schoolYearPre"></output>
+				-
+				<output class="YearOutput" name="schoolYearNext"></output>
+				<label>
+					学年第<input max="4" maxlength="1" min="1" name="semester" size="1" step="1" type="number">
+				</label>
+				<span>学期<strong>个人综合素质测评明细表</strong></span>
+			</legend>
+			<section>
+				<label class="meta-item">
+					二级学院<input name="faculty" type="text">
+				</label>
+				<wbr>
+				<label class="meta-item">
+					姓名<input maxlength="8" name="student-name" type="text">
+				</label>
+				<wbr>
+				<label class="meta-item">
+					学号<input name="student-ID" step="1" type="number">
+				</label>
+				<wbr>
+				<label class="meta-item">
+					专业<input name="student-major" type="text">
+				</label>
+				<label>
+					<input name="schoolYear" onchange="
+				const date = new Date(this.value), UTCFullYear = date.getUTCFullYear(), MONTH = date.getMonth();
+				schoolYearPre.value = UTCFullYear - 1; schoolYearNext.value = UTCFullYear;
+				if ( MONTH < 4 ) semester.value = 1;
+				else if ( MONTH > 7 ) semester.value = 2;" required type="month">
+				</label>
+			</section>
+		</fieldset>
+	</form>
+
+	<section class="PCQAS-Table">
+		<form accept-charset="UTF-8" class="PCQAS-Table__Subject-Row" id="思想品德" method="get" name="思想品德" onfocusout="calculateResult(resultOutput, this instanceof HTMLFormElement ? this : undefined);">
+			<h3 class="Subject-Row__Tittle">思想品德</h3>
+			<div class="Subject-Row__Items">
+				<section class="Subject-Row__Item-Row">
+					<h4 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('思想品德加分项'));" type="button"><a href="#思想品德加分项">➖</a></button>
+						<!--@formatter:off-->加分项目<wbr>对应分值
+						<button onclick="ScoringItemPush(document.getElementById('思想品德加分项'));" type="button"><a href="#思想品德加分项">➕</a></button>
+					</h4>
+					<div class="Item-Row__Spans" id="思想品德加分项"></div>
+				</section>
+				<section class="Subject-Row__Item-Row">
+					<h4 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('思想品德减分项'));" type="button"><a href="#思想品德减分项">➖</a></button>
+						减分项目<wbr>对应分值
+						<button onclick="ScoringItemPush(document.getElementById('思想品德减分项'));" type="button"><a href="#思想品德减分项">➕</a></button>
+					</h4>
+					<div class="Item-Row__Spans" id="思想品德减分项"></div>
+				</section>
+			</div>
+			<label class="Subject-Row__Result">
+				<output name="resultOutput"></output>
+				<button class="Result__Submit-Button" type="submit">Submit!</button>
+			</label>
+		</form>
+		<form class="PCQAS-Table__Subject-Row" id="专业水平" onfocusout="calculateResult(resultOutput, this instanceof HTMLFormElement ? this : undefined);">
+			<h3 class="Subject-Row__Tittle">专业水平</h3>
+			<h4 class="Subject-Row__Items__Tittle">加分项目及<wbr>对应分值</h4>
+			<div class="Subject-Row__Items">
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('课程学习成绩'));" type="button"><a href="#课程学习成绩">➖</a></button>
+						课程<wbr>学习<wbr>成绩
+						<button onclick="ScoringItemPush(document.getElementById('课程学习成绩'));" type="button"><a href="#课程学习成绩">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="课程学习成绩"></div>
+				</section>
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('创新创业水平'));"
+						        type="button"><a href="#创新创业水平">➖</a></button>
+						创新<wbr>创业<wbr>水平
+						<button onclick="ScoringItemPush(document.getElementById('创新创业水平'));" type="button"><a href="#创新创业水平">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="创新创业水平"></div>
+				</section>
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('学科竞赛成绩'));" type="button"><a href="#学科竞赛成绩">➖</a></button>
+						学科<wbr>竞赛<wbr>成绩
+						<button onclick="ScoringItemPush(document.getElementById('学科竞赛成绩'));" type="button"><a href="#学科竞赛成绩">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="学科竞赛成绩"></div>
+				</section>
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('资格、技术等级证书'));" type="button"><a href="#资格、技术等级证书">➖</a></button>
+						资格、<wbr>技术<wbr>等级证书
+						<button onclick="ScoringItemPush(document.getElementById('资格、技术等级证书'));" type="button"><a href="#资格、技术等级证书">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="资格、技术等级证书"></div>
+				</section>
+			</div>
+			<label class="Subject-Row__Result">
+				<output name="resultOutput"></output>
+				<button class="Result__Submit-Button" type="submit">Submit!</button>
+			</label>
+		</form>
+		<form class="PCQAS-Table__Subject-Row" id="体育素质" onfocusout="calculateResult(resultOutput, this instanceof HTMLFormElement ? this : undefined);">
+			<h3 class="Subject-Row__Tittle">体育素质</h3>
+			<div class="Subject-Row__Items">
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('体育素质加分项'));" type="button"><a href="#体育素质加分项">➖</a></button>
+						加分项目<wbr>及<wbr>对应分值
+						<button onclick="ScoringItemPush(document.getElementById('体育素质加分项'));" type="button"><a href="#体育素质加分项">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="体育素质加分项"></div>
+				</section>
+			</div>
+			<label class="Subject-Row__Result">
+				<output name="resultOutput"></output>
+				<button class="Result__Submit-Button" type="submit">Submit!</button>
+			</label>
+		</form>
+		<form class="PCQAS-Table__Subject-Row" id="能力发展" onfocusout="calculateResult(resultOutput, this instanceof HTMLFormElement ? this : undefined);">
+			<h3 class="Subject-Row__Tittle">能力发展</h3>
+			<h4 class="Subject-Row__Items__Tittle">加分项目<wbr>及<wbr>对应分值</h4>
+			<div class="Subject-Row__Items">
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('计算机、英语等级考试'));" type="button"><a href="#计算机、英语等级考试">➖</a></button>
+						计算机、<wbr>英语<wbr>等级考试
+						<button onclick="ScoringItemPush(document.getElementById('计算机、英语等级考试'));" type="button"><a href="#计算机、英语等级考试">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="计算机、英语等级考试"></div>
+				</section>
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('受表彰情况'));" type="button"><a href="#受表彰情况">➖</a></button>
+						受表彰<wbr>情况
+						<button onclick="ScoringItemPush(document.getElementById('受表彰情况'));" type="button"><a href="#受表彰情况">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="受表彰情况"></div>
+				</section>
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('学生干部任职情况'));" type="button"><a href="#学生干部任职情况">➖</a></button>
+						学生干部<wbr>任职<wbr>情况
+						<button onclick="ScoringItemPush(document.getElementById('学生干部任职情况'));" type="button"><a href="#学生干部任职情况">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="学生干部任职情况"></div>
+				</section>
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('校园文化活动'));" type="button"><a href="#校园文化活动">➖</a></button>
+						校园<wbr>文化<wbr>活动
+						<button onclick="ScoringItemPush(document.getElementById('校园文化活动'));" type="button"><a href="#校园文化活动">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="校园文化活动"></div>
+				</section>
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('社会实践与志愿服务'));" type="button"><a href="#社会实践与志愿服务">➖</a></button>
+						社会实践<wbr>与<wbr>志愿服务
+						<button onclick="ScoringItemPush(document.getElementById('社会实践与志愿服务'));" type="button"><a href="#社会实践与志愿服务">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="社会实践与志愿服务"></div>
+				</section>
+				<section class="Subject-Row__Item-Row">
+					<h5 class="Item-Row__Tittle">
+						<button onclick="ScoringItemPop(document.getElementById('其他'));" type="button"><a href="#其他">➖</a></button>
+						其他
+						<button onclick="ScoringItemPush(document.getElementById('其他'));" type="button"><a href="#其他">➕</a></button>
+					</h5>
+					<div class="Item-Row__Spans" id="其他"></div>
+				</section>
+			</div>
+			<label class="Subject-Row__Result">
+				<output name="resultOutput"></output>
+				<button class="Result__Submit-Button" type="submit">Submit!</button>
+			</label>
+		</form>
+	</section>
+</main>
+
+<template id="思想品德加分项-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="思想品德">
+			加分项：<input name="思想品德加分项描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="思想品德">
+			<input maxlength="5" min="0.00" name="思想品德加分项分值" onchange="document.getElementById('思想品德').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="思想品德减分项-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="思想品德">
+			减分项：<input name="思想品德减分项描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="思想品德">
+			<input max="0.00" maxlength="6" name="思想品德减分项分值" onchange="document.getElementById('思想品德').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^-([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="课程学习成绩-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="专业水平">
+			加分项：<input name="课程学习成绩描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="专业水平">
+			<input maxlength="5" min="0.00" name="课程学习成绩分值" onchange="document.getElementById('专业水平').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="创新创业水平-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="专业水平">
+			加分项：<input name="创新创业水平描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="专业水平">
+			<input maxlength="5" min="0.00" name="创新创业水平分值" onchange="document.getElementById('专业水平').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="学科竞赛成绩-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="专业水平">
+			加分项：<input name="学科竞赛成绩描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="专业水平">
+			<input maxlength="5" min="0.00" name="学科竞赛成绩分值" onchange="document.getElementById('专业水平').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="资格、技术等级证书-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="专业水平">
+			加分项：<input name="资格、技术等级证书描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="专业水平">
+			<input maxlength="5" min="0.00" name="资格、技术等级证书分值" onchange="document.getElementById('专业水平').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="体育素质加分项-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="体育素质">
+			加分项：<input name="体育素质加分项描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="体育素质">
+			<input maxlength="5" min="0.00" name="体育素质加分项分值" onchange="document.getElementById('体育素质').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="计算机、英语等级考试-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="能力发展">
+			加分项：<input name="计算机、英语等级考试描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="能力发展">
+			<input maxlength="5" min="0.00" name="计算机、英语等级考试分值" onchange="document.getElementById('能力发展').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="受表彰情况-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="能力发展">
+			加分项：<input name="受表彰情况描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="能力发展">
+			<input maxlength="5" min="0.00" name="受表彰情况分值" onchange="document.getElementById('能力发展').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="学生干部任职情况-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="能力发展">
+			加分项：<input name="学生干部任职情况描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="能力发展">
+			<input maxlength="5" min="0.00" name="学生干部任职情况分值" onchange="document.getElementById('能力发展').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="校园文化活动-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="能力发展">
+			加分项：<input name="校园文化活动描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="能力发展">
+			<input maxlength="5" min="0.00" name="校园文化活动分值" onchange="document.getElementById('能力发展').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+<template id="社会实践与志愿服务-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="能力发展">
+			加分项：<input name="社会实践与志愿服务描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="能力发展">
+			<input maxlength="5" min="0.00" name="社会实践与志愿服务分值" onchange="document.getElementById('能力发展').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+</span>
+</template>
+<template id="其他-templateRow">
+	<span class="Item-Row__Detailed-Pair">
+		<label for="能力发展">
+			加分项：<input name="其他描述" placeholder="" required type="text">，<wbr>
+		</label>
+		<label for="能力发展">
+			<input maxlength="5" min="0.00" name="其他分值" onchange="document.getElementById('能力发展').dispatchEvent(FOCUS_EVENT_ACTIVE);"
+			       pattern="^([1-9]+\d*(.[0-9]{1,2})?)$" placeholder="" required step="0.01"
+			       type="number" value="0">
+		</label>
+	</span>
+</template>
+
+<script async rel="script" src="JS/PersonalComprehensiveQualityAssessmentScheduleFilling.js" type="module"></script>
+<script async rel="script" src="JS/PCQAS__PageInitialization.js" type="module"></script>
+</body>
+</html>

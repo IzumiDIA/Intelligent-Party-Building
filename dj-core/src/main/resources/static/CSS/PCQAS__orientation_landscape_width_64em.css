@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+form.table-header {
+	width: 74vw;
+}
+
+.Item-Row__Tittle {
+	writing-mode: horizontal-tb;
+}
+
+.Item-Row__Tittle > button {
+	height: auto;
+}
+
+.Item-Row__Tittle > button:first-of-type {
+	margin-inline-end: 1em;
+}
+
+.Item-Row__Tittle > button:last-of-type {
+	margin-inline-start: 1em;
+}

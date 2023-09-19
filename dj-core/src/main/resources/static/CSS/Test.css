@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+@supports (box-reflect: below) {
+	:root {
+		background-image: radial-gradient(pink, red, yellow, blue);
+	}
+}

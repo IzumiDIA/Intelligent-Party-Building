@@ -1,0 +1,257 @@
+@charset "UTF-8";
+:root {
+	width: min(100vw, 100%, 100dvw);
+	scroll-behavior: smooth;
+}
+
+body {
+	margin-left: 0;
+	margin-right: 0;
+	display: flex;
+	flex-direction: column;
+	place-content: center;
+	place-items: center;
+}
+
+main#main-table {
+	width: 100%;
+	height: 100%;
+	margin: auto 0 auto 0;
+	display: flex;
+	flex-direction: column;
+	place-content: center;
+	place-items: center;
+}
+
+form.table-header {
+	margin-block-end: 1.5em;
+}
+
+form.table-header fieldset:only-of-type {
+	border-radius: .5em;
+}
+
+form.table-header fieldset:only-of-type > legend:only-of-type {
+	margin: auto;
+	font-family: "楷体", serif;
+	font-size: 1.25em;
+}
+
+form.table-header label.meta-item {
+	line-height: 2.25em;
+	white-space: nowrap;
+}
+
+form.table-header label.meta-item input[name="faculty"][type] {
+	max-width: 9em;
+}
+
+form.table-header label.meta-item input[name="student-name"][type="text"] {
+	max-width: 4.5em;
+}
+
+form.table-header label.meta-item input[name="student-ID"][type="number"] {
+	max-width: 7em;
+}
+
+.YearOutput:empty {
+	width: 2.5em;
+	height: 1em;
+	display: inline-block;
+	line-height: 1em;
+	border-top: .02em dotted red;
+	border-right: .02em dotted red;
+	border-bottom: .02em solid gray;
+	border-left: .02em dotted red;
+}
+
+fieldset label > input[type="number"][name="semester"][step="1"] {
+	width: 1.8em;
+}
+
+.PCQAS-Table {
+	width: 80%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+form.PCQAS-Table__Subject-Row {
+	width: 100%;
+	height: inherit;
+	max-width: 100vw;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	place-content: space-evenly;
+	container: title-direction / inline-size;
+}
+
+form.PCQAS-Table__Subject-Row ~ form.PCQAS-Table__Subject-Row {
+	margin-top: 2rem;
+}
+
+.PCQAS-Table :where(.Subject-Row__Tittle, .Subject-Row__Items__Tittle) {
+	writing-mode: vertical-lr;
+	text-align: center;
+}
+
+@container title-direction (width < 40em) {
+	.Subject-Row__Tittle, .Subject-Row__Items__Tittle {
+		width: 100%;
+		writing-mode: horizontal-tb;
+		color: red;
+	}
+}
+
+.Subject-Row__Items {
+	max-width: 100%;
+	height: inherit;
+	display: inline-flex;
+	flex-direction: column;
+	place-content: center;
+	place-items: center;
+}
+
+.PCQAS-Table .Subject-Row__Item-Row {
+	max-width: 100%;
+	width: inherit;
+	height: inherit;
+	display: inline-grid;
+	grid-template: auto / .2fr 1fr;
+	grid-gap: 1.5vw;
+	align-items: center;
+	justify-items: center;
+	align-content: center;
+	justify-content: center;
+}
+
+.PCQAS-Table .Subject-Row__Item-Row ~ .Subject-Row__Item-Row {
+	margin-top: 1rem;
+}
+
+.Item-Row__Tittle {
+	max-height: 70%;
+	grid-area: 1 / 1 / 2 / 2;
+	display: inline-flex;
+	flex-direction: row;
+	place-content: center;
+	place-items: center;
+	place-self: center;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.Item-Row__Tittle > button {
+	width: auto;
+	padding: 0;
+	place-self: stretch;
+	user-select: none;
+}
+
+.Item-Row__Tittle > button > a[href^='#'] {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	display: flex;
+	place-content: center;
+	place-items: center;
+	text-align: center;
+	text-decoration: unset;
+}
+
+.Item-Row__Spans {
+	width: 100%;
+	min-height: 2em;
+	grid-area: 1 / 2 / 2 / 3;
+	display: inline-flex;
+	flex-direction: column;
+	scroll-margin-top: 14vh;
+
+	border: .04em solid darkblue;
+	border-radius: .2em;
+	padding: .4em .4em .4em .4em;
+}
+
+.Item-Row__Spans:empty::before {
+	content: "----------------Void----------------";
+	white-space: nowrap;
+	flex-wrap: nowrap;
+	word-break: keep-all;
+	text-align: center;
+	overflow: clip;
+	opacity: .7;
+}
+
+.Item-Row__Detailed-Pair {
+	width: inherit;
+	display: flex;
+	flex-basis: 2.4em;
+	flex-direction: row;
+	flex-wrap: wrap;
+	white-space: nowrap;
+}
+
+span.Item-Row__Detailed-Pair > label {
+	height: fit-content;
+	display: inherit;
+}
+
+span.Item-Row__Detailed-Pair > label:first-of-type {
+	min-width: fit-content;
+	width: 70%;
+}
+
+span.Item-Row__Detailed-Pair > label:last-of-type::before {
+	content: "分值:";
+	margin-right: .2em;
+	padding-right: .1em;
+}
+
+span.Item-Row__Detailed-Pair > label > input {
+	height: inherit;
+}
+
+span.Item-Row__Detailed-Pair > label:first-of-type > input[type="text"] {
+	width: 100%;
+	min-width: 12em;
+	margin-bottom: .6em;
+}
+
+span.Item-Row__Detailed-Pair > label:last-of-type > input[type="number"][pattern] {
+	max-width: 3em;
+	margin-bottom: 1.8em;
+}
+
+label.Subject-Row__Result {
+	min-height: 4em;
+	height: fit-content;
+	min-width: calc(2em + 2%);
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	flex-basis: 4em;
+	flex-grow: .3;
+	place-self: center;
+	place-content: space-between;
+}
+
+label.Subject-Row__Result::before {
+	content: "分值:";
+	padding-right: .4em;
+}
+
+label.Subject-Row__Result > output[name="resultOutput"] {
+	min-width: 2.5em;
+	margin-bottom: .6em;
+}
+
+button.Result__Submit-Button {
+	min-width: 4em;
+	width: 100%;
+	height: fit-content;
+	margin-left: .5em;
+	padding: .2em;
+	flex-basis: 5em;
+	flex-grow: .4;
+}

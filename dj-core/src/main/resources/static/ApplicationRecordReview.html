@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" content="text/html;" http-equiv="Content-Type">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="#fff" name="theme-color">
+	<meta content="Just it's my test demo." name="description">
+	<title>ApplicationRecordReview</title>
+	<link href="CSS/ApplicationRecordReview.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<table class="record-entry__page-table">
+	<caption>入党流程审核表</caption>
+	<colgroup>
+		<col class="studentID">
+		<col class="current_form_data">
+		<col class="current_node">
+		<col class="current_subNode">
+	</colgroup>
+	<thead>
+	<tr>
+		<th scope="col">studentID</th>
+		<th scope="col">current_form_data</th>
+		<th scope="col">current_node</th>
+		<th scope="col">current_subNode</th>
+	</tr>
+	</thead>
+	<tfoot>
+	<tr>
+		<td>studentID</td>
+		<td>current_form_data</td>
+		<td>current_node</td>
+		<td>current_subNode</td>
+	</tr>
+	</tfoot>
+	<tbody id="display-tbody"></tbody>
+</table>
+<template id="tbody-row-template">
+	<tr>
+		<td class="tbody-td studentID"></td>
+		<td class="tbody-td current_form_data"></td>
+		<td class="tbody-td current_node"></td>
+		<td class="tbody-td current_subNode"></td>
+	</tr>
+</template>
+<script async rel="script" src="JS/ApplicationRecordReview.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.Main-Page4 .BackgroundCanvas {
+	position: fixed;
+	width: 100%;
+	height: calc(100vh - var(--Header-Height));
+	top: 0;
+	z-index: -1;
+}

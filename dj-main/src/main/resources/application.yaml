@@ -1,0 +1,25 @@
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/intelligent_party_building_db
+        hikari:
+            jdbcUrl: jdbc:mysql://localhost:3306/intelligent_party_building_db
+            username: root
+            password: 123
+            driver-class-name: com.mysql.cj.jdbc.Driver
+            data-source-properties:
+                database-name: intelligent_party_building_db
+                port-number: 3306
+                server-name: localhost
+                cache-prep-stmts: true
+                use-local-session-state: true
+                prep-stmt-cache-size: 255
+                use-server-prep-stmts: true
+                rewrite-batched-statements: true
+                cache-result-set-metadata: true
+                cache-server-configuration: true
+                elide-set-auto-commits: true
+                maintain-time-stats: false
+                
+server:
+    port: 8080
+    address: localhost

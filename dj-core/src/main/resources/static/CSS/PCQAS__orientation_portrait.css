@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+body {
+	background-color: rgba(255, 0, 0, 0.1);
+}
+
+.PCQAS-Table {
+	width: 100%;
+}
+
+.Subject-Row__Tittle {
+	margin-block: .4em;
+}
+
+.Subject-Row__Items {
+	width: 95vw;
+}
+
+.Subject-Row__Items__Tittle {
+	margin-block: .2em;
+}
+
+.Subject-Row__Item-Row {
+}
+
+.Item-Row__Tittle {
+	max-height: 15em;
+	margin-block-start: .22em;
+	margin-block-end: .01em;
+}

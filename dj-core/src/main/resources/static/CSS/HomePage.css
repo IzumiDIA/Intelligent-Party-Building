@@ -1,0 +1,360 @@
+@charset "UTF-8";
+html, body {
+	block-size: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+}
+
+:root {
+	--borderWhenChecked: .01em inset rgb(53, 112, 255);
+}
+
+.Header {
+	position: fixed;
+	top: 0;
+	z-index: 4;
+	margin: auto;
+	inline-size: 100vw;
+	block-size: var(--Header-Height);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	background-color: rgba(228, 255, 126, .2);
+	background-image: linear-gradient(to bottom, rgba(160, 160, 160, 0.7), rgba(255, 255, 255, 0.7) 75%);
+	box-shadow: inset 0 .1rem 2rem .2rem rgba(254, 210, 122, 0.4),
+	0 .2rem 2rem .2rem rgba(254, 210, 122, 0.8);
+	backdrop-filter: blur(1rem);
+	user-select: none;
+	--index1w: var(--labelWidth);
+	--index1bc: initial;
+	--index1br: initial;
+	--index1b: initial;
+	--index2w: var(--labelWidth);
+	--index2bc: initial;
+	--index2br: initial;
+	--index2b: initial;
+	--index3w: var(--labelWidth);
+	--index3bc: initial;
+	--index3br: initial;
+	--index3b: initial;
+	--index4w: var(--labelWidth);
+	--index4bc: initial;
+	--index4br: initial;
+	--index4b: none;
+}
+
+.Header > .WebSiteIcon {
+	max-block-size: 100%;
+	place-self: center;
+	border-radius: 50%;
+}
+
+.Header > .Register_or_Login {
+	display: flex;
+	place-content: center;
+	place-items: center;
+	padding-inline: 2rem;
+	filter: drop-shadow(.3em .18em .2em #bfafb5);
+}
+
+.Register_or_Login > a {
+	position: relative;
+	font-size: 1.3rem;
+	font-family: "楷体", fantasy;
+	text-decoration: none;
+	transition: .4s;
+}
+
+.Register_or_Login > a:hover {
+	font-size: 1.5rem;
+	font-weight: 1000;
+}
+
+.Register_or_Login > a:first-of-type {
+	top: -.2em;
+	right: -.2em;
+	padding: .1em .5em .2em .1em;
+	color: #238D3BFF;
+	text-shadow: 0 0 .05em #d3fedc, 0.08em 0.05em .4em #0d5b20;
+	clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+	border-block-start: 3px groove rgba(39, 168, 199, 0.6);
+	border-inline-start: 3px groove rgba(39, 168, 199, 0.6);
+	border-radius: .4em 0 0 .4em;
+	background-color: rgba(164, 192, 248, 0.9);
+}
+
+.Register_or_Login > a:first-of-type:hover {
+	color: #56d11d;
+	text-shadow: 0 0 .05em #d3fedc;
+	background-color: rgba(137, 168, 231, 0.9);
+	background-image: radial-gradient(ellipse, #dfffab, transparent);
+}
+
+.Register_or_Login > a:last-of-type {
+	left: -.1em;
+	bottom: -.2em;
+	padding: .2em .1em .1em .5em;
+	color: #4e388b;
+	text-shadow: 0 0 .05em #e5d0fe, 0.08em 0.05em .4em #501478;
+	clip-path: polygon(25% 0%, 100% 0, 100% 100%, 0 100%);
+	background-color: rgba(173, 255, 148, 0.9);
+	border-bottom: 3px ridge rgba(116, 198, 33, 0.6);
+	border-right: 3px ridge rgba(116, 198, 33, 0.6);
+	border-radius: 0 .4em .4em 0;
+}
+
+.Register_or_Login > a:last-of-type:hover {
+	color: #7351d5;
+	text-shadow: 0 0 .05em #e5d0fe;
+	background-color: rgba(148, 216, 126, 0.9);
+	background-image: radial-gradient(ellipse, #9deaff, transparent);
+}
+
+.Header > menu {
+	display: flex;
+	flex-direction: row;
+	place-content: center space-evenly;
+	place-items: center;
+	padding: 0;
+}
+
+.Header > menu > li {
+	list-style: none;
+}
+
+.Header > menu > li > .Header-Menu-Button {
+	display: inline-flex;
+	padding-top: .2rem;
+	padding-bottom: .2rem;
+	place-content: center;
+	place-items: center;
+	font-size: 1.4rem;
+	font-family: "等线", fantasy;
+	font-weight: 500;
+	text-shadow: .04em .02em .1em #4f3c3c;
+	text-align: center;
+	cursor: pointer;
+	transition: .6s;
+}
+
+.NavBarButton1 {
+	inline-size: var(--index1w);
+	background-color: var(--index1bc);
+	border-radius: var(--index1br);
+	border: var(--index1b);
+}
+
+.NavBarButton2 {
+	inline-size: var(--index2w);
+	background-color: var(--index2bc);
+	border-radius: var(--index2br);
+	border: var(--index2b);
+}
+
+.NavBarButton3 {
+	inline-size: var(--index3w);
+	background-color: var(--index3bc);
+	border-radius: var(--index3br);
+	border: var(--index3b);
+}
+
+.NavBarButton4 {
+	inline-size: var(--index4w);
+	background-color: var(--index4bc);
+	border-radius: var(--index4br);
+	border: var(--index4b);
+}
+
+.Header > menu > li > .Header-Menu-Button:hover {
+	inline-size: var(--labelWidthWhenHovered);
+	font-weight: 1000;
+	background-color: rgba(219, 238, 250, 0.6);
+	border-radius: .4rem;
+	border: #ffb57c solid .1rem;
+}
+
+#CUBE_MAIN {
+	margin-top: var(--Header-Height);
+	block-size: calc(100vh - var(--Header-Height));
+	transform-style: preserve-3d;
+	transform-origin: 50% 50% -50vw;
+	transition: transform 2s;
+}
+
+.Main-Sidebar {
+	display: flex;
+	position: fixed;
+	top: max(6rem, 14vw);
+	left: -5rem;
+	bottom: max(6rem, 14vw);
+	min-block-size: 20vw;
+	block-size: auto;
+	max-block-size: 45vw;
+	inline-size: 5rem;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #7ea5f7;
+	transform-origin: 0 50%;
+	transform: scaleX(0);
+	transition: transform .5s, left .5s;
+	z-index: 3;
+}
+
+.Main-Section {
+	inline-size: 100vw;
+	block-size: calc(100vh - var(--Header-Height));
+	position: absolute;
+	display: inline-flex;
+	flex-direction: column;
+	text-align: center;
+	overflow-y: scroll;
+}
+
+.Main-Page1 {
+	background-color: white;
+	scroll-behavior: smooth;
+	/*background-color: #0A2E38;*/
+}
+
+.Main-Page2 {
+	transform: rotateY(90deg) translateZ(-50vw) translateX(50vw);
+	transform-origin: 100vw 50% -50vw;
+	background-color: transparent;
+	/*background-color: #AF0ACEFF;*/
+}
+
+.Main-Page3 {
+	transform: rotateY(180deg) translateZ(-100vw);
+	transform-origin: 50vw 50% -100vw;
+	background-color: transparent;
+	overflow: hidden;
+	/*background-color: #5DF018FF;*/
+}
+
+.Main-Page4 {
+	transform: rotateY(270deg) translateZ(-50vw) translateX(-50vw);
+	transform-origin: 0 50% -50vw;
+	background-color: transparent;
+	/*background-color: #F81A1AFF;*/
+}
+
+#s1:checked ~ #CUBE_MAIN {
+	transform: rotateY(0);
+}
+
+#s1:checked ~ .Header {
+	--index1w: var(--labelWidthWhenChecked);
+	--index1bc: rgba(219, 238, 250, 0.9);
+	--index1br: .4rem;
+	--index1b: var(--borderWhenChecked);
+}
+
+#s2:checked ~ #CUBE_MAIN {
+	transform: rotateY(-90deg);
+}
+
+#s2:checked ~ .Header {
+	--index2w: var(--labelWidthWhenChecked);
+	--index2bc: rgba(219, 238, 250, 0.9);
+	--index2br: .4rem;
+	--index2b: var(--borderWhenChecked);
+}
+
+#s3:checked ~ #CUBE_MAIN {
+	transform: rotateY(-180deg);
+}
+
+#s3:checked ~ .Main-Sidebar {
+	animation: sidePop 1s 1.3s backwards;
+	left: 0;
+	transform: scaleX(1);
+}
+
+#s3:checked ~ .Header {
+	--index3w: var(--labelWidthWhenChecked);
+	--index3bc: rgba(219, 238, 250, 0.9);
+	--index3br: .4rem;
+	--index3b: var(--borderWhenChecked);
+}
+
+#s4:checked ~ #CUBE_MAIN {
+	transform: rotateY(-270deg);
+}
+
+#s4:checked ~ .Header {
+	--index4w: var(--labelWidthWhenChecked);
+	--index4bc: rgba(219, 238, 250, 0.9);
+	--index4br: .4rem;
+	--index4b: var(--borderWhenChecked);
+}
+
+:is(#s1,#s2,#s3,#s4) {
+	display: none;
+}
+
+@keyframes sidePop {
+	from {
+		left: -5rem;
+		transform: scaleX(0);
+	}
+	to {
+		left: 0;
+		transform: scaleX(1);
+	}
+}
+
+@media (max-aspect-ratio: 3/5) {
+	:root {
+		--Header-Height: 3.7rem;
+		--labelWidth: 6vw;
+		--labelWidthWhenHovered: calc(var(--labelWidth) * 1.4);
+		--labelWidthWhenChecked: calc(var(--labelWidth) * 1.25);
+	}
+
+	.Header {
+		font-size: .8rem;
+	}
+
+	.Header > menu {
+		inline-size: 50%;
+	}
+
+	.Header > menu > li > label {
+		writing-mode: vertical-rl;
+	}
+
+	.Register_or_Login > a {
+		font-size: 1.2rem;
+	}
+}
+
+@media (min-aspect-ratio: 3/5) and (max-aspect-ratio: 1/1) {
+	:root {
+		--Header-Height: 3.6rem;
+		--labelWidth: max(8vw, 3.5rem);
+		--labelWidthWhenHovered: calc(var(--labelWidth) * 2);
+		--labelWidthWhenChecked: calc(var(--labelWidth) * 1.5);
+	}
+
+	.Header {
+		font-size: .8rem;
+	}
+
+	.Header > menu {
+		inline-size: 60%;
+	}
+}
+
+@media not all and (max-aspect-ratio: 1/1) {
+	:root {
+		--Header-Height: 3rem;
+		--labelWidth: max(6vw, 4rem);
+		--labelWidthWhenHovered: calc(var(--labelWidth) * 2.5);
+		--labelWidthWhenChecked: calc(var(--labelWidth) * 2);
+	}
+
+	.Header > menu {
+		inline-size: 70%;
+	}
+}
