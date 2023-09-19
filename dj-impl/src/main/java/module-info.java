@@ -1,4 +1,4 @@
-import edu.nnudy.lq.intelligentPartyBuilding.manager.UserManagerProvider;
+import edu.nnudy.lq.intelligentPartyBuilding.manager.provider.UserManagerProvider;
 import edu.nnudy.lq.intelligentPartyBuilding.manager.intf.UserManager;
 import edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.intf.UserAuthenticationDAO;
 import edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.provider.UserAuthenticationDAOProvider;

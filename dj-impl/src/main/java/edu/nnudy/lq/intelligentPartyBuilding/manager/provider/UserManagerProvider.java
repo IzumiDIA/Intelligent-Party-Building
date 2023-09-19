@@ -1,4 +1,4 @@
-package edu.nnudy.lq.intelligentPartyBuilding.manager;
+package edu.nnudy.lq.intelligentPartyBuilding.manager.provider;
 
 import edu.nnudy.lq.intelligentPartyBuilding.manager.intf.UserManager;
 import lombok.experimental.UtilityClass;
