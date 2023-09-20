@@ -7,6 +7,7 @@
 		<groupId>edu.nnudy.lq</groupId>
 		<artifactId>Intelligent-Party-Building</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	
 	<artifactId>dj-main</artifactId>

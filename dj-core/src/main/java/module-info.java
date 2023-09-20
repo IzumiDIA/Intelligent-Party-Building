@@ -6,10 +6,10 @@ import edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.intf.*;
  * Core business module.
  */
 module dj.core {
-	requires transitive org.jetbrains.annotations;
-	requires static transitive lombok;
-	requires transitive java.sql;
-	requires transitive dj.shared;
+	requires org.jetbrains.annotations;
+	requires static lombok;
+	requires java.sql;
+	requires dj.shared;
 	requires spring.core;
 	requires spring.context;
 	requires spring.web;
