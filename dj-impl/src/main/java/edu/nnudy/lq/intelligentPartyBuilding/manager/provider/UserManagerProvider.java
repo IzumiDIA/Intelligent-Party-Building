@@ -6,9 +6,9 @@ import org.springframework.web.context.ContextLoader;
 
 import java.util.Objects;
 
-@UtilityClass
-public class UserManagerProvider {
-	public UserManager provider() {
+
+public final class UserManagerProvider {
+	public static UserManager provider() {
 		return Objects.requireNonNull(ContextLoader.getCurrentWebApplicationContext())
 				       .getBean(
 						       "userManager",
