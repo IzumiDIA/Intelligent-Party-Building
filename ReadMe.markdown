@@ -15,7 +15,7 @@
 
 ## 1.2 项目开发基本依赖
 
-1. Java 20 (GraalVM)
+1. Java 21 (GraalVM)
 2. SpringBoot 3.1.+
 3. Maven 3.9.+
 4. MySQL 8.0.+
