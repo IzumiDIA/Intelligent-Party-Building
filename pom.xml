@@ -17,12 +17,8 @@
 	<properties>
 		<coreModuleName>dj-core</coreModuleName>
 		<java.version>21</java.version>
-		<maven.compiler.release>${java.version}</maven.compiler.release>
-		<maven.compiler.source>${java.version}</maven.compiler.source>
-		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 	</properties>
 	<modules>
 		<module>dj-shared</module>
@@ -51,7 +47,6 @@
 		<dependency>
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
-			<version>24.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -92,7 +87,6 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-<!--			<optional>true</optional>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -131,6 +125,14 @@
 				<artifactId>lombok</artifactId>
 				<version>edge-SNAPSHOT</version>
 				<scope>provided</scope>
+				<optional>false</optional>
+			</dependency>
+			<dependency>
+				<groupId>org.jetbrains</groupId>
+				<artifactId>annotations</artifactId>
+				<version>24.0.1</version>
+				<scope>provided</scope>
+				<optional>false</optional>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -138,6 +140,32 @@
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<release>${java.version}</release>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+						<annotationProcessorPaths>
+							<path>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+								<version>edge-SNAPSHOT</version>
+							</path>
+							<path>
+								<groupId>org.jetbrains</groupId>
+								<artifactId>annotations</artifactId>
+								<version>24.0.1</version>
+							</path>
+						</annotationProcessorPaths>
+						<compilerArgument>--enable-preview</compilerArgument>
+						<fork>true</fork>
+						<meminitial>256m</meminitial>
+						<maxmem>8192m</maxmem>
+					</configuration>
+				</plugin>
 <!--				<plugin>-->
 <!--					<groupId>com.github.hazendaz.maven</groupId>-->
 <!--					<artifactId>htmlcompressor-maven-plugin</artifactId>-->

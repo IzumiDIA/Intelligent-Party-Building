@@ -2,19 +2,22 @@ package edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.intf;
 
 import edu.nnudy.lq.intelligentPartyBuilding.constant.enums.RoleType;
 import edu.nnudy.lq.intelligentPartyBuilding.model.dto.pdo.UserAccountAuthentication;
+import org.jetbrains.annotations.Range;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 public interface UserAuthenticationDAO extends DataAccessObject {
-	
+//	@Range(from = 0, to = Integer.MAX_VALUE)
 	Integer count();
-	
-	Integer count( final long ID);
-	Boolean isExisting( final UserAccountAuthentication authentication);
-	
+//	@Range(from = 0, to = Integer.MAX_VALUE)
+	Integer count(final long ID);
+	Boolean isExisting(@NonNull final UserAccountAuthentication authentication);
+	@Nullable
 	UserAccountAuthentication findUser(
-			 final long ID,
-			 final RoleType roleType
+			final long ID,
+			@NonNull final RoleType roleType
 	);
-	int updatePassword( final UserAccountAuthentication authentication,  final byte[] newPassword);
-	int updateRoleType( final UserAccountAuthentication authentication,  final RoleType newRoleType);
-	int insertUserAuth( final UserAccountAuthentication newAuthentication);
+	int updatePassword(@NonNull final UserAccountAuthentication authentication, @NonNull final byte[] newPassword);
+	int updateRoleType(@NonNull final UserAccountAuthentication authentication, @NonNull final RoleType newRoleType);
+	int insertUserAuth(@NonNull final UserAccountAuthentication newAuthentication);
 }

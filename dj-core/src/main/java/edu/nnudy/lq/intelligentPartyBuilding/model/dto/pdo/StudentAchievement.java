@@ -1,15 +1,17 @@
 package edu.nnudy.lq.intelligentPartyBuilding.model.dto.pdo;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import org.jetbrains.annotations.Range;
 import org.springframework.jdbc.core.DataClassRowMapper;
+import org.springframework.lang.NonNull;
 
 import java.io.Serial;
 import java.io.Serializable;
 
 public record StudentAchievement(
-		 long ID,
+		@Range(from = 0, to = ((long) Integer.MAX_VALUE) << 1 ) long ID,
 		double CET_score,
-		 String CRE_grade,
+		@NonNull String CRE_grade,
 		JsonNode personal_comprehensive_quality_assessment
 ) implements Serializable {
 	public static final DataClassRowMapper<StudentAchievement> MAPPER = DataClassRowMapper.newInstance(StudentAchievement.class);
