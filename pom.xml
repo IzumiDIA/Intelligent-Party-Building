@@ -28,11 +28,6 @@
 	</modules>
 	
 	<dependencies>
-<!--		&lt;!&ndash; https://mvnrepository.com/artifact/org.jetbrains/annotations &ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.jetbrains</groupId>-->
-<!--			<artifactId>annotations</artifactId>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
@@ -68,10 +63,6 @@
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -132,10 +123,11 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.11.0</version>
 					<configuration>
-<!--						<fork>true</fork>-->
+						<fork>true</fork>
+						<compilerReuseStrategy>alwaysNew</compilerReuseStrategy>
 <!--						<executable>${JavaCompiler}</executable>-->
 						<encoding>UTF-8</encoding>
-<!--						<forceJavacCompilerUse>true</forceJavacCompilerUse>-->
+						<forceJavacCompilerUse>true</forceJavacCompilerUse>
 						<release>${java.version}</release>
 						<source>${java.version}</source>
 						<target>${java.version}</target>
@@ -159,64 +151,64 @@
 <!--						</annotationProcessorPaths>-->
 					</configuration>
 				</plugin>
-<!--				<plugin>-->
-<!--					<groupId>com.github.hazendaz.maven</groupId>-->
-<!--					<artifactId>htmlcompressor-maven-plugin</artifactId>-->
-<!--					<version>1.9.1.1</version>-->
-<!--					<configuration>-->
-<!--						<encoding>UTF-8</encoding>-->
-<!--						<compressCss>true</compressCss>-->
-<!--						<simpleBooleanAttributes>true</simpleBooleanAttributes>-->
-<!--						<fileExt>-->
-<!--							<fileExt>html</fileExt>-->
-<!--							<fileExt>css</fileExt>-->
-<!--						</fileExt>-->
-<!--						<srcFolder>${coreModuleName}/src/main/resources/static</srcFolder>-->
-<!--						<targetFolder>${coreModuleName}/target/classes/static</targetFolder>-->
-<!--					</configuration>-->
-<!--					<executions>-->
-<!--						<execution>-->
-<!--							<phase>process-resources</phase>-->
-<!--							<id>html</id>-->
-<!--							<goals>-->
-<!--								<goal>html</goal>-->
-<!--							</goals>-->
-<!--						</execution>-->
-<!--					</executions>-->
-<!--				</plugin>-->
+				<plugin>
+					<groupId>com.github.hazendaz.maven</groupId>
+					<artifactId>htmlcompressor-maven-plugin</artifactId>
+					<version>1.9.1.1</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<compressCss>true</compressCss>
+						<simpleBooleanAttributes>true</simpleBooleanAttributes>
+						<fileExt>
+							<fileExt>html</fileExt>
+							<fileExt>css</fileExt>
+						</fileExt>
+						<srcFolder>${coreModuleName}/src/main/resources/static</srcFolder>
+						<targetFolder>${coreModuleName}/target/classes/static</targetFolder>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>process-resources</phase>
+							<id>compresses</id>
+							<goals>
+								<goal>html</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
-<!--			<plugin>-->
-<!--				<groupId>org.asciidoctor</groupId>-->
-<!--				<artifactId>asciidoctor-maven-plugin</artifactId>-->
-<!--				<version>2.2.4</version>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<id>generate-docs</id>-->
-<!--						<phase>prepare-package</phase>-->
-<!--						<goals>-->
-<!--							<goal>process-asciidoc</goal>-->
-<!--						</goals>-->
-<!--						<configuration>-->
-<!--							<backend>html</backend>-->
-<!--							<doctype>book</doctype>-->
-<!--						</configuration>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--				<dependencies>-->
-<!--					<dependency>-->
-<!--						<groupId>org.springframework.restdocs</groupId>-->
-<!--						<artifactId>spring-restdocs-asciidoctor</artifactId>-->
-<!--						<version>${spring-restdocs.version}</version>-->
-<!--					</dependency>-->
-<!--				</dependencies>-->
-<!--			</plugin>-->
+			<plugin>
+				<groupId>org.asciidoctor</groupId>
+				<artifactId>asciidoctor-maven-plugin</artifactId>
+				<version>2.2.4</version>
+				<executions>
+					<execution>
+						<id>generate-docs</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>process-asciidoc</goal>
+						</goals>
+						<configuration>
+							<backend>html</backend>
+							<doctype>book</doctype>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework.restdocs</groupId>
+						<artifactId>spring-restdocs-asciidoctor</artifactId>
+						<version>${spring-restdocs.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 	
 	<profiles>
-		<!-- (D:\MicrosoftVisualStudio2022\VC\Auxiliary\Build\vcvars64.bat) -and (mvn -Pnative -DskipTests package) -->
+		<!-- (D:\MicrosoftVisualStudio2022\VC\Auxiliary\Build\vcvars64.bat)  -and (mvn process-resources -Pnative -DskipTests package) -->
 		<profile>
 			<id>native</id>
 			<build>
@@ -226,10 +218,10 @@
 							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-compiler-plugin</artifactId>
 						</plugin>
-<!--						<plugin>-->
-<!--							<groupId>com.github.hazendaz.maven</groupId>-->
-<!--							<artifactId>htmlcompressor-maven-plugin</artifactId>-->
-<!--						</plugin>-->
+						<plugin>
+							<groupId>com.github.hazendaz.maven</groupId>
+							<artifactId>htmlcompressor-maven-plugin</artifactId>
+						</plugin>
 						<plugin>
 							<groupId>org.springframework.boot</groupId>
 							<artifactId>spring-boot-maven-plugin</artifactId>

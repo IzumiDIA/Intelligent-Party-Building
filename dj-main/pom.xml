@@ -41,16 +41,13 @@
 		<finalName>${project.parent.name}</finalName>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-			<plugin>
 				<groupId>org.graalvm.buildtools</groupId>
 				<artifactId>native-maven-plugin</artifactId>
 				<configuration>
 					<imageName>${project.parent.name}</imageName>
 					<buildArgs>
 						<arg>-H:+PrintClassInitialization</arg>
+						<arg>--enable-preview</arg>
 					</buildArgs>
 					<jvmArgs>
 						<arg>--enable-preview</arg>
@@ -61,6 +58,8 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<compilerArguments>--enable-preview</compilerArguments>
+					<jvmArguments>--enable-preview</jvmArguments>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
@@ -78,9 +77,6 @@
 						<goals>
 							<goal>process-aot</goal>
 						</goals>
-						<configuration>
-							<jvmArguments>--enable-preview</jvmArguments>
-						</configuration>
 					</execution>
 					<execution>
 						<goals>

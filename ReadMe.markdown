@@ -1,4 +1,4 @@
-# 1. 简介：
+# 1. 简介
 
 **中北党建平台**
 
@@ -47,3 +47,18 @@
 ### 1.5.3 中北党建平台管理员使用流程
 
 ![中北党建平台管理员使用流程](/design/assets/中北党建平台管理员使用流程.svg)
+
+# 2. 构建
+
+## 2.1 构建方式
+
+1. 使用**IntelliJ IDEA**加载、解析该项目。
+2. 使用**IntelliJ IDEA**内置的Java项目构建功能对整个项目进行**编译输出**。
+	- 编译输出前必须**启用注解处理器**。
+    - 切**勿**将构建任务**托管**至Maven。
+3. 在根目录路径下，打开 ***x64 Native Tools Command Prompt for VS 2022***，在该命令行下执行指令：
+	```shell
+	mvn process-resources -Pnative -DskipTests package
+	```
+	- 切**勿**使用**IntelliJ IDEA内置的终端**功能。
+4. 如果成功，则最后在dj.main模块的target文件夹下，生成有执行文件。
