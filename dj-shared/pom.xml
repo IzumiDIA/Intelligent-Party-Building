@@ -7,7 +7,7 @@
 		<groupId>edu.nnudy.lq</groupId>
 		<artifactId>Intelligent-Party-Building</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath><!-- Unmodifiable. -->
 	</parent>
 	
 	<artifactId>dj-shared</artifactId>
@@ -19,8 +19,21 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 	
+	<dependencies>
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>24.0.1</version>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
 </project>

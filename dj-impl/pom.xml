@@ -7,7 +7,7 @@
 		<groupId>edu.nnudy.lq</groupId>
 		<artifactId>Intelligent-Party-Building</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath><!-- Unmodifiable. -->
 	</parent>
 	
 	<artifactId>dj-impl</artifactId>
@@ -32,10 +32,34 @@
 			<version>${project.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.30</version>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.jetbrains</groupId>
+			<artifactId>annotations</artifactId>
+			<version>24.0.1</version>
+			<scope>provided</scope>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 	
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>21</source>
+					<target>21</target>
+					<compilerArgs>--enable-preview</compilerArgs>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

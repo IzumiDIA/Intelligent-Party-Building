@@ -7,6 +7,7 @@ import edu.nnudy.lq.intelligentPartyBuilding.mapper.dao.intf.*;
  */
 module dj.core {
 	requires transitive dj.shared;
+	requires static transitive org.jetbrains.annotations;
 	requires java.sql;
 	requires spring.core;
 	requires spring.context;

@@ -7,14 +7,14 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
 public interface UserAuthenticationDAO extends DataAccessObject {
-//	@Range(from = 0, to = Integer.MAX_VALUE)
+	@Range(from = 0, to = Integer.MAX_VALUE)
 	Integer count();
-//	@Range(from = 0, to = Integer.MAX_VALUE)
-	Integer count(final long ID);
+	@Range(from = 0, to = Integer.MAX_VALUE)
+	Integer count(@Range(from = 0, to = ((long) Integer.MAX_VALUE) << 1 ) final long ID);
 	Boolean isExisting(@NonNull final UserAccountAuthentication authentication);
 	@Nullable
 	UserAccountAuthentication findUser(
-			final long ID,
+			@Range(from = 0, to = ((long) Integer.MAX_VALUE) << 1 ) final long ID,
 			@NonNull final RoleType roleType
 	);
 	int updatePassword(@NonNull final UserAccountAuthentication authentication, @NonNull final byte[] newPassword);
