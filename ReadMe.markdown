@@ -15,9 +15,9 @@
 
 ## 1.2 项目开发基本依赖
 
-1. Java 21 (GraalVM)
+1. Java GraalVM 21 (以及native-image执行构建所需的依赖)
 2. SpringBoot 3.1.+
-3. Maven 3.9.+
+3. Maven Daemon 4+
 4. MySQL 8.0.+
 5. spring-jdbc
 6. com.alibaba:easyexcel
@@ -33,6 +33,7 @@
 2. WebStorm
 3. Navicat Premium
 4. Apifox
+5. Git
 
 ## 1.5 项目设计
 
@@ -52,13 +53,21 @@
 
 ## 2.1 构建方式
 
-1. 使用**IntelliJ IDEA**加载、解析该项目。
-2. 使用**IntelliJ IDEA**内置的Java项目构建功能对整个项目进行**编译输出**。
-	- 编译输出前必须**启用注解处理器**。
-    - 切**勿**将构建任务**托管**至Maven。
-3. 在根目录路径下，打开 ***x64 Native Tools Command Prompt for VS 2022***，在该命令行下执行指令：
+### 2.1.1 Fat JAR 包构建
+
+1. 在项目根目录路径下，执行构建指令：
 	```shell
-	mvn process-resources -Pnative -DskipTests package
+	mvnd -DskipTests package
+	```
+2. 如果成功，则最后在 main 模块的 target 文件夹下，生成有.jar包。
+
+#### 2.1.2 Windows平台下的AOT构建
+
+1. 确保有安装好 Microsoft Visual Studio 2022 以及相应的C++构建环境。
+2. 在项目根目录路径下，打开 ***x64 Native Tools Command Prompt for VS 2022***，在该命令行下执行指令：
+	```shell
+	mvnd -Pnative -DskipTests package
 	```
 	- 切**勿**使用**IntelliJ IDEA内置的终端**功能。
-4. 如果成功，则最后在dj.main模块的target文件夹下，生成有执行文件。
+    - 使用原始的Command来执行该指令。
+3. 如果成功，则最后在 main 模块的 target 文件夹下，生成有执行文件。

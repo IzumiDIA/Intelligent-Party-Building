@@ -5,26 +5,29 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.3</version>
+		<version>3.1.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
 	<groupId>edu.nnudy.lq</groupId>
 	<artifactId>Intelligent-Party-Building</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Intelligent-Party-Building</name>
 	<description>Intelligent Party Building</description>
+	
 	<properties>
-		<coreModuleName>dj-core</coreModuleName>
 		<java.version>21</java.version>
+		<entry.point>edu.nnudy.lq.dj.IntelligentPartyBuildingApplication</entry.point>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+	
 	<modules>
-		<module>dj-shared</module>
-		<module>dj-core</module>
-		<module>dj-impl</module>
-		<module>dj-main</module>
+		<module>common</module>
+		<module>core</module>
+		<module>impl</module>
+		<module>main</module>
 	</modules>
 	
 	<dependencies>
@@ -52,24 +55,21 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
-			<optional>true</optional>
+			<optional>false</optional>
 		</dependency>
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.restdocs</groupId>
 			<artifactId>spring-restdocs-mockmvc</artifactId>
@@ -80,22 +80,16 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-	
 	</dependencies>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<type>pom</type>
-				<version>3.1.3</version>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.mysql</groupId>
-				<artifactId>mysql-connector-j</artifactId>
-				<scope>runtime</scope>
-				<version>8.1.0</version>
+				<groupId>org.jetbrains</groupId>
+				<artifactId>annotations</artifactId>
+				<version>24.0.1</version>
+				<scope>provided</scope>
+				<optional>true</optional>
 			</dependency>
 			<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 			<dependency>
@@ -106,11 +100,17 @@
 				<optional>true</optional>
 			</dependency>
 			<dependency>
-				<groupId>org.jetbrains</groupId>
-				<artifactId>annotations</artifactId>
-				<version>24.0.1</version>
-				<scope>provided</scope>
-				<optional>true</optional>
+				<groupId>com.mysql</groupId>
+				<artifactId>mysql-connector-j</artifactId>
+				<version>8.1.0</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<type>pom</type>
+				<version>3.1.4</version>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -118,39 +118,6 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.11.0</version>
-					<configuration>
-						<fork>true</fork>
-						<compilerReuseStrategy>alwaysNew</compilerReuseStrategy>
-<!--						<executable>${JavaCompiler}</executable>-->
-						<encoding>UTF-8</encoding>
-						<forceJavacCompilerUse>true</forceJavacCompilerUse>
-						<release>${java.version}</release>
-						<source>${java.version}</source>
-						<target>${java.version}</target>
-						<useIncrementalCompilation>false</useIncrementalCompilation>
-						<enablePreview>true</enablePreview>
-						<meminitial>256m</meminitial>
-						<maxmem>8192m</maxmem>
-						<parameters>true</parameters>
-						<verbose>true</verbose>
-<!--						<annotationProcessorPaths>-->
-<!--							<path>-->
-<!--								<groupId>org.projectlombok</groupId>-->
-<!--								<artifactId>lombok</artifactId>-->
-<!--								<version>1.18.30</version>-->
-<!--							</path>-->
-<!--							<path>-->
-<!--								<groupId>org.jetbrains</groupId>-->
-<!--								<artifactId>annotations</artifactId>-->
-<!--								<version>24.0.1</version>-->
-<!--							</path>-->
-<!--						</annotationProcessorPaths>-->
-					</configuration>
-				</plugin>
 				<plugin>
 					<groupId>com.github.hazendaz.maven</groupId>
 					<artifactId>htmlcompressor-maven-plugin</artifactId>
@@ -163,8 +130,6 @@
 							<fileExt>html</fileExt>
 							<fileExt>css</fileExt>
 						</fileExt>
-						<srcFolder>${coreModuleName}/src/main/resources/static</srcFolder>
-						<targetFolder>${coreModuleName}/target/classes/static</targetFolder>
 					</configuration>
 					<executions>
 						<execution>
@@ -176,61 +141,94 @@
 						</execution>
 					</executions>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.1</version>
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<release>${java.version}</release>
+						<source>${java.version}</source>
+						<target>${java.version}</target>
+						<useIncrementalCompilation>false</useIncrementalCompilation>
+						<meminitial>512m</meminitial>
+						<maxmem>8192m</maxmem>
+						<compilerArgument>--enable-preview</compilerArgument>
+						<parameters>true</parameters>
+						<verbose>true</verbose>
+						<!--					<fork>true</fork>-->
+						<!--					<executable>${JavaCompiler}</executable>-->
+						<!--					<compilerReuseStrategy>alwaysNew</compilerReuseStrategy>-->
+						<!--					<forceJavacCompilerUse>true</forceJavacCompilerUse>-->
+						<!--					<enablePreview>true</enablePreview>-->
+						<!--					<annotationProcessorPaths>-->
+						<!--						<path>-->
+						<!--							<groupId>org.projectlombok</groupId>-->
+						<!--							<artifactId>lombok</artifactId>-->
+						<!--							<version>1.18.30</version>-->
+						<!--						</path>-->
+						<!--						<path>-->
+						<!--							<groupId>org.jetbrains</groupId>-->
+						<!--							<artifactId>annotations</artifactId>-->
+						<!--							<version>24.0.1</version>-->
+						<!--						</path>-->
+						<!--					</annotationProcessorPaths>-->
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+					<configuration>
+						<compilerArguments>--enable-preview</compilerArguments>
+						<jvmArguments>--enable-preview</jvmArguments>
+						<mainClass>${entry.point}</mainClass>
+						<excludes>
+							<exclude>
+								<groupId>org.projectlombok</groupId>
+								<artifactId>lombok</artifactId>
+							</exclude>
+							<exclude>
+								<groupId>org.jetbrains</groupId>
+								<artifactId>annotations</artifactId>
+							</exclude>
+						</excludes>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.graalvm.buildtools</groupId>
+					<artifactId>native-maven-plugin</artifactId>
+					<configuration>
+						<skip>true</skip>
+					</configuration>
+				</plugin>
 			</plugins>
 		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.asciidoctor</groupId>
-				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>2.2.4</version>
-				<executions>
-					<execution>
-						<id>generate-docs</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>process-asciidoc</goal>
-						</goals>
-						<configuration>
-							<backend>html</backend>
-							<doctype>book</doctype>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.springframework.restdocs</groupId>
-						<artifactId>spring-restdocs-asciidoctor</artifactId>
-						<version>${spring-restdocs.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-		</plugins>
 	</build>
 	
 	<profiles>
-		<!-- (D:\MicrosoftVisualStudio2022\VC\Auxiliary\Build\vcvars64.bat)  -and (mvn process-resources -Pnative -DskipTests package) -->
-		<profile>
-			<id>native</id>
+		<profile><!-- mvnd -Pnative -DskipTests package -->
+			<id>native</id><!-- Do not remove this profile! -->
 			<build>
+				<finalName>${project.name}</finalName>
 				<pluginManagement>
 					<plugins>
 						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
-							<artifactId>maven-compiler-plugin</artifactId>
-						</plugin>
-						<plugin>
-							<groupId>com.github.hazendaz.maven</groupId>
-							<artifactId>htmlcompressor-maven-plugin</artifactId>
-						</plugin>
-						<plugin>
-							<groupId>org.springframework.boot</groupId>
-							<artifactId>spring-boot-maven-plugin</artifactId>
-						</plugin>
-						<plugin>
 							<groupId>org.graalvm.buildtools</groupId>
 							<artifactId>native-maven-plugin</artifactId>
-							<configuration>
-								<imageName>${project.name}</imageName>
+							<extensions>true</extensions>
+							<configuration combine.self="override">
+								<skip>false</skip>
+								<buildArgs>
+									<enablePreview>true</enablePreview>
+									<arg>-march=native</arg>
+									<arg>-da</arg>
+									<arg>-O3</arg>
+								</buildArgs>
+								<jvmArgs>
+									<arg>--enable-preview</arg>
+								</jvmArgs>
+								<mainClass>${entry.point}</mainClass>
+								<verbose>true</verbose>
 							</configuration>
 							<executions>
 								<execution>
@@ -243,15 +241,44 @@
 						</plugin>
 					</plugins>
 				</pluginManagement>
+				<plugins>
+					<plugin>
+						<groupId>org.asciidoctor</groupId>
+						<artifactId>asciidoctor-maven-plugin</artifactId>
+						<version>2.2.4</version>
+						<executions>
+							<execution>
+								<id>generate-docs</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>process-asciidoc</goal>
+								</goals>
+								<configuration>
+									<backend>html</backend>
+									<doctype>book</doctype>
+								</configuration>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>org.springframework.restdocs</groupId>
+								<artifactId>spring-restdocs-asciidoctor</artifactId>
+								<version>${spring-restdocs.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
 			</build>
 		</profile>
 	</profiles>
 	
-	<repositories> <!--
+	<repositories>
+		<!--
 		<repository>
 			<id>projectlombok.org</id>
 			<url>https://projectlombok.org/edge-releases</url>
-		</repository> -->
+		</repository>
+		-->
 		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
@@ -262,6 +289,10 @@
 		</repository>
 	</repositories>
 	
+	<prerequisites>
+		<maven>3.9.4</maven>
+	</prerequisites>
+	
 	<developers>
 		<developer>
 			<id>IzumiDIA</id>
@@ -269,8 +300,8 @@
 			<email>izumiryuu@qq.com</email>
 			<roles>
 				<role>Author</role>
-				<role>Architect</role>
 				<role>Project Manager</role>
+				<role>Architect</role>
 			</roles>
 		</developer>
 	</developers>
