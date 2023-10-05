@@ -16,11 +16,11 @@ public class DefaultUserAuthenticationDAOImpl implements UserAuthenticationDAO {
 	@NonNull
 	private final JdbcTemplate jdbcTemplate;
 	@NonNull
-	private final SimpleJdbcInsert simpleJdbcInsert;
+	private final SimpleJdbcInsert jdbcInsert;
 	
 	public DefaultUserAuthenticationDAOImpl(@NonNull final JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
-		this.simpleJdbcInsert = new SimpleJdbcInsert(this.jdbcTemplate).withTableName("user_account_authentication");
+		this.jdbcInsert = new SimpleJdbcInsert(this.jdbcTemplate).withTableName("user_account_authentication");
 	}
 	
 	@Override
@@ -87,6 +87,6 @@ public class DefaultUserAuthenticationDAOImpl implements UserAuthenticationDAO {
 	
 	@Override
 	public int insertUserAuth(@NonNull final UserAccountAuthentication newAuthentication) {
-		return simpleJdbcInsert.execute(new BeanPropertySqlParameterSource(newAuthentication));
+		return jdbcInsert.execute(new BeanPropertySqlParameterSource(newAuthentication));
 	}
 }

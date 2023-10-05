@@ -1,16 +1,15 @@
 package edu.nnudy.lq.dj.mapper.dao.provider;
 
 import edu.nnudy.lq.dj.mapper.dao.intf.UserAuthenticationDAO;
+import lombok.experimental.UtilityClass;
 import org.springframework.web.context.ContextLoader;
 
 import java.util.Objects;
 
-public final class UserAuthenticationDAOProvider {
-	private UserAuthenticationDAOProvider() {
-		throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");
-	}
+@UtilityClass
+public class UserAuthenticationDAOProvider {
 	
-	public static UserAuthenticationDAO provider() {
+	public UserAuthenticationDAO provider() {
 		return Objects.requireNonNull(ContextLoader.getCurrentWebApplicationContext())
 				       .getBean(
 						       "userAuthenticationDAO",

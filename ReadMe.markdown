@@ -17,7 +17,7 @@
 
 1. Java GraalVM 21 (以及native-image执行构建所需的依赖)
 2. SpringBoot 3.1.+
-3. Maven Daemon 4+
+3. Apache Maven Daemon 4+
 4. MySQL 8.0.+
 5. spring-jdbc
 6. com.alibaba:easyexcel
